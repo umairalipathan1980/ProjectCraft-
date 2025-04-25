@@ -394,6 +394,7 @@ def get_project_markdown():
     return markdown_text
 
 # Function to call OpenAI API
+# Function to call OpenAI API
 def call_openai_api(messages, stream=True):
     client = openai.Client(api_key=OPENAI_API_KEY)
     
@@ -408,7 +409,8 @@ def call_openai_api(messages, stream=True):
                 model=st.session_state.selected_model,
                 messages=messages,
                 stream=True,
-                max_tokens=4000
+                max_tokens=4000,
+                temperature=0.9  # Set a higher temperature to stimulate creativity
             ):
                 if chunk.choices[0].delta.content is not None:
                     content = chunk.choices[0].delta.content
@@ -421,7 +423,8 @@ def call_openai_api(messages, stream=True):
                 model=st.session_state.selected_model,
                 messages=messages,
                 stream=False,
-                max_tokens=4000
+                max_tokens=4000,
+                temperature=0.9  # Set a higher temperature to stimulate creativity
             )
             return response.choices[0].message.content
             
