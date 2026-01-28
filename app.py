@@ -307,7 +307,7 @@ if 'chat_started' not in st.session_state:
 if 'generation_in_progress' not in st.session_state:
     st.session_state.generation_in_progress = False
 if 'selected_model' not in st.session_state:
-    st.session_state.selected_model = "gpt-4-turbo" # Use gpt-4.1 when available
+    st.session_state.selected_model = "gpt-5.1" # Use gpt-4.1 when available
 
 # Project generator system prompt
 PROJECT_GENERATOR_PROMPT = """
