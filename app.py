@@ -307,7 +307,7 @@ if 'chat_started' not in st.session_state:
 if 'generation_in_progress' not in st.session_state:
     st.session_state.generation_in_progress = False
 if 'selected_model' not in st.session_state:
-    st.session_state.selected_model = "gpt-4.1" # Use gpt-4.1 when available
+    st.session_state.selected_model = "gpt-5.1-2025-11-13" # Use gpt-5.1-2025-11-13 when available
 
 # Project generator system prompt
 PROJECT_GENERATOR_PROMPT = """
@@ -409,8 +409,8 @@ def call_openai_api(messages, stream=True):
                 model=st.session_state.selected_model,
                 messages=messages,
                 stream=True,
-                max_tokens=4000,
-                temperature=0.9  # Set a higher temperature to stimulate creativity
+                max_completion_tokens=4000,
+                # temperature=0.9  # Set a higher temperature to stimulate creativity
             ):
                 if chunk.choices[0].delta.content is not None:
                     content = chunk.choices[0].delta.content
@@ -423,8 +423,8 @@ def call_openai_api(messages, stream=True):
                 model=st.session_state.selected_model,
                 messages=messages,
                 stream=False,
-                max_tokens=4000,
-                temperature=0.9  # Set a higher temperature to stimulate creativity
+                max_completion_tokens=4000,
+                # temperature=0.9  # Set a higher temperature to stimulate creativity
             )
             return response.choices[0].message.content
             
